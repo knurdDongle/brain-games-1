@@ -6,7 +6,9 @@
   "bin": {
     "brain-games": "dist/bin/brain-games.js"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "babel-node": "babel-node",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -19,6 +21,8 @@
     "babel-cli": "*",
     "babel-core": "*",
     "babel-preset-env": "*",
-    "babel-preset-stage-0": "*"
+    "babel-preset-stage-0": "*",
+    "eslint": "^4.17.0",
+    "eslint-config-airbnb-base": "^12.1.0"
   }
 }
