@@ -1,7 +1,7 @@
 import readlineSync from 'readline-sync';
 import { getName, random } from '.';
 
-console.log('Welcome to the Brain Games');
+console.log('Welcome to the Brain Games!');
 console.log('Answer "yes" if number is even otherwise answer "no"');
 const name = getName();
 
@@ -18,8 +18,8 @@ const startGame = (count = 0) => {
   const answer = readlineSync.question('Your answer: ');
 
   if (answer !== correctAnswer) {
-    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}''`);
-    console.log(`Let's try again, ${name}`);
+    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
+    console.log(`Let's try again, ${name}!`);
     return;
   }
   console.log('Correct!');
