@@ -1,8 +1,9 @@
 import readlineSync from 'readline-sync';
 
-const greet = () => {
+export const getName = () => {
   const name = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${name}!`);
+  return name;
 };
 
-export default greet;
+export const random = (min = 0, max = 100) => Math.floor(Math.random() * (max - min)) + min;
