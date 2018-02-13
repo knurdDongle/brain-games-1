@@ -1,31 +1,39 @@
 import { random, pair } from '../utils';
 import { gameFlow } from '..';
 
-const balance = (n) => {
-  const l = String(n).length;
-  const getNumbersSum = (numberAsStr, i = 0, sum = 0) => {
-    if (i >= l) {
-      return sum;
-    }
-    const newSum = sum + Number(numberAsStr[i]);
-    return getNumbersSum(numberAsStr, i + 1, newSum);
-  };
+const getNumbersSum = (numberAsStr, i = 0, sum = 0) => {
+  if (i >= numberAsStr.length) {
+    return sum;
+  }
 
+  const newSum = sum + Number(numberAsStr[i]);
+  return getNumbersSum(numberAsStr, i + 1, newSum);
+};
+
+const balance = (n) => {
   const sum = getNumbersSum(String(n));
+  const l = String(n).length;
   const unit = Math.floor(sum / l);
 
-  const getBalancedNumber = (num, i, rem) => {
-    if (i >= l) {
-      return String(num);
+  const makeNumber = (num, i) => {
+    if (i === 0) {
+      return num;
     }
-    const addOne = rem > 0 ? 1 : 0;
-    const newDigit = ((unit + addOne) * (10 ** i));
-    const newNum = num + newDigit;
-    const newRem = rem > 0 ? rem - 1 : 0;
-    return getBalancedNumber(newNum, i + 1, newRem);
+
+    const newNum = num + (unit * (10 ** (i - 1)));
+    return makeNumber(newNum, i - 1);
   };
 
-  return getBalancedNumber(0, 0, sum - (unit * l));
+  const makeReminder = (rem, i) => {
+    if (i === 0) {
+      return rem;
+    }
+
+    const newRem = rem + (10 ** (i - 1));
+    return makeReminder(newRem, i - 1);
+  };
+
+  return String(makeNumber(0, l) + makeReminder(0, sum - (unit * l)));
 };
 
 const taskMessage = 'Balance the given number.';
