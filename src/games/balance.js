@@ -20,7 +20,7 @@ const balance = (n) => {
   return getBalancedNumber(0, 0, sum - (unit * l));
 };
 
-const taskMessage = 'Find the greatest common divisor of given numbers.';
+const taskMessage = 'Balance the given number.';
 const game = () => {
   const num = random(100, 999);
   return pair(`${num}`, String(balance(num)));
