@@ -3,8 +3,13 @@ import gameFlow from './game-flow';
 
 const balance = (n) => {
   const l = String(n).length;
-  const getNumbersSum = (numberAsStr, i = 0, sum = 0) => (i < l ?
-    getNumbersSum(numberAsStr, i + 1, sum + Number(numberAsStr[i])) : sum);
+  const getNumbersSum = (numberAsStr, i = 0, sum = 0) => {
+    if (i >= l) {
+      return sum;
+    }
+    const newSum = sum + Number(numberAsStr[i]);
+    return getNumbersSum(numberAsStr, i + 1, newSum);
+  };
 
   const sum = getNumbersSum(String(n));
   const unit = Math.floor(sum / l);
@@ -13,8 +18,11 @@ const balance = (n) => {
     if (i >= l) {
       return String(num);
     }
-    const newNum = num + ((unit + (rem > 0 ? 1 : 0)) * (10 ** i));
-    return getBalancedNumber(newNum, i + 1, rem > 0 ? rem - 1 : 0);
+    const addOne = rem > 0 ? 1 : 0;
+    const newDigit = ((unit + addOne) * (10 ** i));
+    const newNum = num + newDigit;
+    const newRem = rem > 0 ? rem - 1 : 0;
+    return getBalancedNumber(newNum, i + 1, newRem);
   };
 
   return getBalancedNumber(0, 0, sum - (unit * l));
