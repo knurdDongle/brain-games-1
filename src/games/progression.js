@@ -5,11 +5,11 @@ const taskMessage = 'What number is missing in this progression?';
 const game = () => {
   const initialValue = random(0, 31);
   const dif = random(1, 31);
-  const blankSpot = random(1, 11);
+  const blankSpot = random(0, 10);
   const correctAnswer = String(initialValue + (dif * blankSpot));
 
   const getQuestionStr = (val, i, acc) => {
-    if (i >= 11) {
+    if (i >= 10) {
       return acc;
     } else if (i === blankSpot) {
       return getQuestionStr(val + dif, i + 1, `${acc} ..`);
@@ -17,8 +17,8 @@ const game = () => {
 
     return getQuestionStr(val + dif, i + 1, `${acc} ${String(val)}`);
   };
-  console.log(initialValue);
-  const question = getQuestionStr(initialValue, 1, '');
+
+  const question = getQuestionStr(initialValue, 0, '');
   return pair(question, correctAnswer);
 };
 
