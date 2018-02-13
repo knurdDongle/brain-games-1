@@ -1,5 +1,5 @@
 import { random, pair } from '../utils';
-import gameFlow from './game-flow';
+import { gameFlow } from '..';
 
 const taskMessage = 'What is the result of the expression?';
 const game = () => {

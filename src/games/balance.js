@@ -1,5 +1,5 @@
 import { random, pair } from '../utils';
-import gameFlow from './game-flow';
+import { gameFlow } from '..';
 
 const balance = (n) => {
   const l = String(n).length;

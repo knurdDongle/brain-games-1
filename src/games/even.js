@@ -1,5 +1,5 @@
 import { random, pair } from '../utils';
-import gameFlow from './game-flow';
+import { gameFlow } from '..';
 
 const taskMessage = 'Answer "yes" if number is even otherwise answer "no"';
 const game = () => {
