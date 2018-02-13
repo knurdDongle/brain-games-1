@@ -6,6 +6,7 @@ import { first, second } from '../utils';
 export default (taskMessage, game) => {
   console.log('Welcome to the Brain Games!');
   console.log(taskMessage);
+  console.log();
   const name = getName();
 
   const startGame = (count = 0) => {
