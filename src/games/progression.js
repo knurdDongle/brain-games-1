@@ -9,7 +9,7 @@ const game = () => {
   const correctAnswer = String(initialValue + (dif * blankSpot));
 
   const getQuestionStr = (val, i, acc) => {
-    if (i >= 10) {
+    if (i >= 11) {
       return acc;
     } else if (i === blankSpot) {
       return getQuestionStr(val + dif, i + 1, `${acc} ..`);
@@ -17,8 +17,8 @@ const game = () => {
 
     return getQuestionStr(val + dif, i + 1, `${acc} ${String(val)}`);
   };
-
-  const question = getQuestionStr(initialValue + dif, 1, String(initialValue));
+  console.log(initialValue);
+  const question = getQuestionStr(initialValue, 1, '');
   return pair(question, correctAnswer);
 };
 
