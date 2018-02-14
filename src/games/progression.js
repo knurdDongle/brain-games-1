@@ -4,10 +4,10 @@ import { gameFlow } from '..';
 
 const taskMessage = 'What number is missing in this progression?';
 
-const ArithmProgression = (initialValue, dif) => n => initialValue + (dif * (n - 1));
+const arithmProgression = (initialValue, dif) => n => initialValue + (dif * (n - 1));
 
 const game = () => {
-  const prog = ArithmProgression(random(0, 31), random(1, 31));
+  const prog = arithmProgression(random(0, 31), random(1, 31));
   const blankSpot = random(1, 11);
   const correctAnswer = String(prog(blankSpot));
 
