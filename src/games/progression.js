@@ -1,24 +1,27 @@
 import { random, pair } from '../utils';
 import { gameFlow } from '..';
 
-const taskMessage = 'What number is missing in this progression?';
-const game = () => {
-  const initialValue = random(0, 31);
-  const dif = random(1, 31);
-  const blankSpot = random(0, 10);
-  const correctAnswer = String(initialValue + (dif * blankSpot));
 
-  const getQuestionStr = (val, i, acc) => {
-    if (i >= 10) {
+const taskMessage = 'What number is missing in this progression?';
+
+const ArithmProgression = (initialValue, dif) => n => initialValue + (dif * (n - 1));
+
+const game = () => {
+  const prog = ArithmProgression(random(0, 31), random(1, 31));
+  const blankSpot = random(1, 11);
+  const correctAnswer = String(prog(blankSpot));
+
+  const getProgressionStr = (i = 1, acc = '') => {
+    if (i >= 11) {
       return acc;
     } else if (i === blankSpot) {
-      return getQuestionStr(val + dif, i + 1, `${acc} ..`);
+      return getProgressionStr(i + 1, `${acc} ..`);
     }
 
-    return getQuestionStr(val + dif, i + 1, `${acc} ${String(val)}`);
+    return getProgressionStr(i + 1, `${acc} ${String(prog(i))}`);
   };
 
-  const question = getQuestionStr(initialValue, 0, '');
+  const question = getProgressionStr();
   return pair(question, correctAnswer);
 };
 
