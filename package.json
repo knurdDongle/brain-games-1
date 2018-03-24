@@ -22,18 +22,26 @@
     "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
     "prepublishOnly": "npm run build"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndreyMork/brain-games"
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "*",
     "babel-core": "*",
-    "babel-eslint": "^8.2.1",
+    "babel-eslint": "*",
     "babel-preset-env": "*",
     "babel-preset-stage-0": "*",
-    "eslint": "^4.17.0",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.8.0"
+    "eslint": "*",
+    "eslint-config-airbnb-base": "*",
+    "eslint-plugin-import": "*"
   },
+  "bugs": {
+    "url": "https://github.com/AndreyMork/brain-games/issues"
+  },
+  "homepage": "https://github.com/AndreyMork/brain-gendiff#readme",
   "dependencies": {
     "readline-sync": "^1.4.8"
   }
